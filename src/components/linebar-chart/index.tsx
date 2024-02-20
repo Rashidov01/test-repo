@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -41,33 +41,35 @@ interface LineBarChartProps {
 }
 
 export default function LineBarChart({ userData }: LineBarChartProps) {
-  const [dataSet, setDataSet] = useState([]);
+  const [dataSet, setDataSet] = useState<any[]>([]);
 
   const data = {
-    labels: dataSet?.map((el) => el.time),
+    labels: dataSet?.map((el: { time: string }) => el.time),
     datasets: [
       {
         label: "Acceleration",
-        data: dataSet?.map((point) => point.acceleration),
+        data: dataSet?.map(
+          (point: { acceleration: number }) => point.acceleration
+        ),
         borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
       {
         label: "Acc",
-        data: dataSet?.map((point) => point.acc),
+        data: dataSet?.map((point: { acc: number }) => point.acc),
         borderColor: "rgb(53, 162, 235)",
         backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
       {
         label: "Access",
-        data: dataSet?.map((point) => point.access),
+        data: dataSet?.map((point: { access: number }) => point.access),
         borderColor: "rgb(7, 181, 21)",
         backgroundColor: "rgba(9, 100, 39, 0.5)",
       },
     ],
   };
 
-  useState(() => {
+  useEffect(() => {
     if (userData) {
       setDataSet(userData.datasets);
     }
