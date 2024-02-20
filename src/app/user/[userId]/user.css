@@ -1,0 +1,11 @@
+.main-page {
+  height: 100%;
+}
+
+.sidebar {
+  width: 25%;
+}
+
+.main-container {
+  width: 75%;
+}
