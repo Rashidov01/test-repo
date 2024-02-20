@@ -40,7 +40,7 @@ export default async function USerDetailsPage({
             <div>
               <p className="text-grey-600">User accelerations:</p>
               <ul>
-                {userInfo.datasets.map((item, index) => (
+                {userInfo.datasets.map((item: any, index: number) => (
                   <li className="text-gray-400" key={index}>
                     {item.acceleration}
                   </li>
@@ -53,7 +53,7 @@ export default async function USerDetailsPage({
             <div>
               <p className="text-gray-700">User accs:</p>
               <ul>
-                {userInfo.datasets.map((item, index) => (
+                {userInfo.datasets.map((item: any, index: number) => (
                   <li className="text-gray-400" key={index}>
                     {item.acc}
                   </li>
